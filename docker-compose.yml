@@ -1,0 +1,12 @@
+version: '3.0'
+
+services:
+
+
+  mongo:
+    image: mongo:4.2.23
+    restart: always
+    env_file:
+      - ./metabase/config/mongo.env
+    ports:
+      - 27017:27017
