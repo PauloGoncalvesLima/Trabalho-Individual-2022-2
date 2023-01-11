@@ -1,0 +1,20 @@
+FROM python:3.8-bullseye
+
+ENV POETRY_HOME /opt/poetry
+
+# RUN apt-get install -y gcc libffi-dev make automake g++ subversion 
+
+# RUN gcc --version
+
+WORKDIR /app
+
+
+COPY . /app
+
+RUN python3 -m venv $POETRY_HOME && \
+    $POETRY_HOME/bin/pip install poetry==1.3.2 && \
+    $POETRY_HOME/bin/poetry --version
+
+RUN ${POETRY_HOME}/bin/poetry install
+
+ENTRYPOINT [ "/opt/poetry/bin/poetry", "run", "python", "trabalho_indi_gces_2022_punb/main.py" ]

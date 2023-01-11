@@ -10,3 +10,9 @@ services:
       - ./metabase/config/mongo.env
     ports:
       - 27017:27017
+  
+  app:
+    build:
+      context: .
+      dockerfile: app-dockerfile
+    
