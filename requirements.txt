@@ -6,6 +6,7 @@ charset-normalizer==2.1.1
 contourpy==1.0.6
 coverage==7.0.2
 cycler==0.11.0
+cython==0.29.14
 entrypoints==0.4
 exceptiongroup==1.1.0
 fonttools==4.38.0

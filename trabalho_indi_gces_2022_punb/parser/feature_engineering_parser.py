@@ -1,4 +1,4 @@
-from src.parser.parser_base import ParserBase
+from trabalho_indi_gces_2022_punb.parser.parser_base import ParserBase
 
 class FeatureEngineeringParser(ParserBase):
 
