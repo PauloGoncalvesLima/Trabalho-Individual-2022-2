@@ -1,5 +1,5 @@
-from trabalho_indi_gces_2022_punb.parser.parser_base import ParserBase
-from trabalho_indi_gces_2022_punb.parser.const import model_type
+from trabalho_individual_gces_2022_paulo.parser.parser_base import ParserBase
+from trabalho_individual_gces_2022_paulo.parser.const import model_type
 
 class ModelParser(ParserBase):
     

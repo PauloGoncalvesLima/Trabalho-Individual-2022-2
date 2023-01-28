@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "trabalho-indi-gces-2022-punb"
+name = "trabalho_individual_gces_2022_paulo"
 version = "0.1.0"
 description = ""
 authors = ["Paulo Gonçalves Lima <paulogoncalves436@gmail.com>"]
 readme = "README.md"
-packages = [{include = "trabalho_indi_gces_2022_punb"}]
+packages = [{include = "trabalho_individual_gces_2022_paulo"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"

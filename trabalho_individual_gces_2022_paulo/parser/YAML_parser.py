@@ -1,6 +1,5 @@
 import yaml
-
-from trabalho_indi_gces_2022_punb.parser.parser_base import ParserBase
+from trabalho_individual_gces_2022_paulo.parser.parser_base import ParserBase
 
 class YAMLParser(ParserBase):
 
