@@ -27,8 +27,20 @@ jobs:
       - name: Executar linters
         uses: wearerequired/lint-action@v2
         with:
-          GITHUB_TOKEN: ${{secrets.TOKEN_GCES}}
           black: true
           black_auto_fix: true
-          autopep8: true
-          autopep8_auto_fix: true
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: app-dockerfile
+          push: true
+          tags: paulogoncalveslima/trabalho_gces:latest
