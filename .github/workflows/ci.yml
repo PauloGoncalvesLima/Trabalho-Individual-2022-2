@@ -23,10 +23,11 @@ jobs:
         with:
           python-version: 3.8
       - name: Python linters
-        run: pip install black flake8 autopep8
+        run: pip install black
       - name: Executar linters
         uses: wearerequired/lint-action@v2
         with:
+          GITHUB_TOKEN: ${{secrets.TOKEN_GCES}}
           black: true
           black_auto_fix: true
           autopep8: true
