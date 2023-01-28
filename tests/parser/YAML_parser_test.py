@@ -38,16 +38,22 @@ def valid_yaml_parser():
         f.write(valid_yaml)
     return YAMLParser("valid_config.yaml")
 
+
 @pytest.fixture
 def invalid_yaml_parser():
     with open("invalid_config.yaml", "w") as f:
         f.write(invalid_yaml)
     return YAMLParser("invalid_config.yaml")
 
+
 # Tests
 def test_valid_yaml(valid_yaml_parser):
     assert valid_yaml_parser.parse() == expected_output
 
+
 def test_invalid_yaml(invalid_yaml_parser):
-    with pytest.raises(ValueError, match=r".*Error in file invalid_config.yaml: the field `id` is required.*"):
+    with pytest.raises(
+        ValueError,
+        match=r".*Error in file invalid_config.yaml: the field `id` is required.*",
+    ):
         invalid_yaml_parser.parse()
