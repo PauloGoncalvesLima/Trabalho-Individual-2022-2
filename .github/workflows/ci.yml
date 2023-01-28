@@ -42,6 +42,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: {context}/app-dockerfile
+          file: {{defaultContext}}/app-dockerfile
           push: true
           tags: paulogoncalveslima/trabalho_gces:latest
