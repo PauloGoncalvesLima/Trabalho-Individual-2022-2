@@ -23,9 +23,11 @@ jobs:
         with:
           python-version: 3.8
       - name: Python linters
-        run: pip install black flake8
+        run: pip install black flake8 autopep8
       - name: Executar linters
         uses: wearerequired/lint-action@v2
         with:
           black: true
+          black_auto_fix: true
           autopep8: true
+          autopep8_auto_fix: true
