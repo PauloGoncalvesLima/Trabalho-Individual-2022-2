@@ -15,9 +15,12 @@ jobs:
   publish:
     machine: true # Use a Linux VM instead of docker environment
     working_directory: ~/repo # Default working directory, where your project will be cloned
+    environment:
+      PYPI_USERNAME: $PYPI_USERNAME
+      PYPI_PASSWORD: $PYPI_PASSWORD
     steps:
       - checkout
-      - run: docker-compose run -e PYPI_PASSWORD=$PYPI_PASSWORD PYPI_PASSWORD=$PYPI_PASSWORD app-publish 
+      - run: docker-compose run app-publish 
 
 workflows:
   version: 2
