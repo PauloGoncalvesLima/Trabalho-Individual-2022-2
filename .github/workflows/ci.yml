@@ -12,11 +12,20 @@ on:
 
 jobs:
   run-linters:
+    permissions: write-all
     name: Linters
     runs-on: ubuntu-latest
-     steps:
-      - uses: actions/checkout@v2  
-      - name: Python Linter
-        uses: sunnysid3up/python-linter@master
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
         with:
-          source: "."
+          python-version: 3.8
+      - name: Python linters
+        run: pip install black flake8
+      - name: Executar linters
+        uses: wearerequired/lint-action@v2
+        with:
+          black: true
+          flake8: true
