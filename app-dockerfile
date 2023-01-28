@@ -19,8 +19,7 @@ COPY pyproject.toml README.md execute_app.sh ./
 RUN chmod 777 execute_app.sh && \
     python3 -m venv $POETRY_HOME && \
     $POETRY_HOME/bin/pip install poetry==1.3.2 && \
-    $POETRY_HOME/bin/poetry --version
-
-RUN ${POETRY_HOME}/bin/poetry install
+    $POETRY_HOME/bin/poetry --version && \
+    ${POETRY_HOME}/bin/poetry install
 
 ENTRYPOINT [ "./execute_app.sh" ]
