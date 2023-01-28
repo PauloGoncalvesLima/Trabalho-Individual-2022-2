@@ -1,15 +1,20 @@
 import pytest
 from trabalho_individual_gces_2022_paulo.parser.parser_base import ParserBase
 
+
 @pytest.fixture
 def parser():
     return ParserBase()
 
-@pytest.mark.parametrize("variable, field, expected_output", [
-    ({'field1': 'value1'}, 'field1', 'value1'),
-    ({'field1': 'value1'}, 'field2', ValueError),
-    ({'field1': 'value1'}, 'value2', ValueError)
-])
+
+@pytest.mark.parametrize(
+    "variable, field, expected_output",
+    [
+        ({"field1": "value1"}, "field1", "value1"),
+        ({"field1": "value1"}, "field2", ValueError),
+        ({"field1": "value1"}, "value2", ValueError),
+    ],
+)
 def test_try_get(parser, variable, field, expected_output):
     if expected_output == KeyError:
         with pytest.raises(KeyError):
@@ -20,9 +25,13 @@ def test_try_get(parser, variable, field, expected_output):
     else:
         assert parser._try_get(variable, field) == expected_output
 
-@pytest.mark.parametrize("variable, field, default_value, expected_output", [
-    ({'field1': 'value1'}, 'field1', 'default', 'value1'),
-    ({'field1': 'value1'}, 'field2', 'default', 'default')
-])
+
+@pytest.mark.parametrize(
+    "variable, field, default_value, expected_output",
+    [
+        ({"field1": "value1"}, "field1", "default", "value1"),
+        ({"field1": "value1"}, "field2", "default", "default"),
+    ],
+)
 def test_get(parser, variable, field, default_value, expected_output):
     assert parser._get(variable, field, default_value) == expected_output

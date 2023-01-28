@@ -1,3 +1,1 @@
-model_type = {
-    'ADDRESS': 'address'
-}
+model_type = {"ADDRESS": "address"}

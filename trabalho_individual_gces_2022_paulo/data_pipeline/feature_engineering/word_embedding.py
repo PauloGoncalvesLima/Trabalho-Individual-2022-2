@@ -1,6 +1,7 @@
 from whatlies.language import BytePairLanguage
 import numpy as np
 
+
 class WordEmbedding:
     def __init__(self, lang, dimensions):
         """Initialize a word embedding object using the BytePairLanguage model.
@@ -12,8 +13,8 @@ class WordEmbedding:
         dimensions: str
             The number of dimensions for the word embedding vectors (default is 25)
         """
-        self.bpl = BytePairLanguage(lang=lang, dim=dimensions) 
-        
+        self.bpl = BytePairLanguage(lang=lang, dim=dimensions)
+
     def get_embedding(self, text):
         """Get the word embedding vector for a given text.
 
@@ -26,7 +27,7 @@ class WordEmbedding:
         ----------
         arr[float]
             A word embedding vector for the given text
-        
+
         Examples
         --------
         >>> get_embedding("This is a text", "es", 25)
