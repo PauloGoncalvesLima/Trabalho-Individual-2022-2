@@ -30,6 +30,7 @@ jobs:
           black: true
           black_auto_fix: true
   docker:
+    needs: run-linters
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
