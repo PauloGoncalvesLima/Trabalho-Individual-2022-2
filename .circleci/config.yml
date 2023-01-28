@@ -24,10 +24,10 @@ workflows:
   build_accept_deploy:
     jobs:
       - test
-      - build
-          # requires:
-          #   - test
-      - publish
-          # requires:
-          #   - build
-          #   - test
+      - build:
+          requires:
+            - test
+      - publish:
+          requires:
+            - build
+            - test
