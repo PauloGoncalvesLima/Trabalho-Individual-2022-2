@@ -76,9 +76,9 @@ workflows:
       - publish:
           requires:
             - build
-      - docs-build
-          # requires:
-          #   - publish
+      - docs-build:
+          requires:
+            - publish
       - docs-deploy:
           requires:
             - docs-build
