@@ -27,6 +27,8 @@ RUN pip3 install Sphinx==6.1.3
 COPY execute_app.sh ./
 RUN chmod 777 execute_app.sh
 
+VOLUME [ "/docs" ]
+
 RUN sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
 
 RUN cd /docs/ && cat Makefile

@@ -22,6 +22,9 @@ jobs:
     machine: true # Use a Linux VM instead of docker environment
     steps:
       - checkout
+      # - run:
+      #     name: Mkdir Docs
+      #     command: mkdir docs
       - run:
           name: Build docs
           command: docker-compose run -e MODE=DOCS build-docs
