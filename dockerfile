@@ -17,14 +17,18 @@ COPY tests tests
 COPY yamls yamls
 COPY pyproject.toml README.md ./
 
-RUN apt-get update && apt-get upgrade -y
-
 RUN python3 -m venv $POETRY_HOME && \
     $POETRY_HOME/bin/pip install poetry==1.3.2 && \
     $POETRY_HOME/bin/poetry --version && \
     ${POETRY_HOME}/bin/poetry install
 
+RUN pip3 install Sphinx==6.1.3
+
 COPY execute_app.sh ./
 RUN chmod 777 execute_app.sh
+
+RUN sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
+
+RUN cd /docs/ && make html
 
 ENTRYPOINT [ "./execute_app.sh" ]
