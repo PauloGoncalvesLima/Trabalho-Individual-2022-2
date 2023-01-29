@@ -26,10 +26,10 @@ jobs:
           fingerprints:
             - "59:ad:fd:64:71:eb:81:01:6a:d7:1a:c9:0c:19:39:af"
       - run:
-          name: Install dependencies
-          command: docker-compose run -e MODE=PUBLISH -e PYPI_PASSWORD=$PYPI_PASSWORD app-publish 
-      - run:
           name: Build docs
+          command: docker-compose run -e MODE=DOCS build-docs
+      - run:
+          name: Make docs
           command: cd docs/ && make html
       - persist_to_workspace:
           root: docs/_build
