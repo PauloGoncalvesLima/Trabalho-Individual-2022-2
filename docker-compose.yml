@@ -33,8 +33,14 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    
   
+  build-docs:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./docs:/docs
+
   postgres:
     image: postgres
     env_file:
