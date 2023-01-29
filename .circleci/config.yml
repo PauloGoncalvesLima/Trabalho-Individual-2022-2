@@ -25,9 +25,6 @@ jobs:
       - run:
           name: Build docs
           command: docker-compose run -e MODE=DOCS build-docs
-      - run:
-          name: Make docs
-          command: cd docs/ && make html
       - persist_to_workspace:
           root: docs/_build
           paths: 
@@ -66,3 +63,6 @@ workflows:
       - docs-build
           # requires:
           #   - publish
+      - docs-deploy:
+          requires:
+            - docs-build
