@@ -29,6 +29,6 @@ RUN chmod 777 execute_app.sh
 
 RUN sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
 
-RUN cd /docs/ && make html
+RUN cd /docs/ && cat Makefile
 
 ENTRYPOINT [ "./execute_app.sh" ]
