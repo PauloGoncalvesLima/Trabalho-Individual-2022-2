@@ -17,6 +17,8 @@ COPY tests tests
 COPY yamls yamls
 COPY pyproject.toml README.md ./
 
+RUN apt-get update && apt-get upgrade -y
+
 RUN python3 -m venv $POETRY_HOME && \
     $POETRY_HOME/bin/pip install poetry==1.3.2 && \
     $POETRY_HOME/bin/poetry --version && \
