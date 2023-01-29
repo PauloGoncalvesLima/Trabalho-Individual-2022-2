@@ -22,9 +22,6 @@ jobs:
     machine: true # Use a Linux VM instead of docker environment
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "59:ad:fd:64:71:eb:81:01:6a:d7:1a:c9:0c:19:39:af"
       - run:
           name: Build docs
           command: docker-compose run -e MODE=DOCS build-docs
@@ -35,6 +32,25 @@ jobs:
           root: docs/_build
           paths: 
             - html
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "59:ad:fd:64:71:eb:81:01:6a:d7:1a:c9:0c:19:39:af"
+      - checkout
+      - attach_workspace:
+          at: docs/_build
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@paulo.net"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist docs/_build/html
 
 workflows:
   version: 2
@@ -47,6 +63,6 @@ workflows:
       - publish:
           requires:
             - build
-      - docs-build:
-          requires:
-            - publish
+      - docs-build
+          # requires:
+          #   - publish

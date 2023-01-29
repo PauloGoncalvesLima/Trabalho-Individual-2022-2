@@ -7,6 +7,6 @@ elif [ $MODE = "TEST" ]; then
 elif [ $MODE = "PUBLISH" ]; then
     ${POETRY_HOME}/bin/poetry publish --build --username "__token__" --password "${PYPI_PASSWORD}"
 elif [ $MODE = "DOCS" ]; then
-    sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
+    python3 -m sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
     cd /docs/ && make html
 fi
