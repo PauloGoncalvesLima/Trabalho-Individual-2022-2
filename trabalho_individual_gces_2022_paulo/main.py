@@ -27,9 +27,9 @@ def get_config():
 
         print("FEATURES")
         print(features_configs)
-        print(3 * "\n")
+        print(4 * "\n")
         print(20 * "-")
-        print(3 * "\n")
+        print(4 * "\n")
         print(model_configs)
 
 

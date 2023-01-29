@@ -26,8 +26,13 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    networks:
-      - app_meta
+    
+  app-publish:
+    environment:
+      - MODE=PUBLISH
+    build:
+      context: .
+      dockerfile: dockerfile
     
   
   postgres:
