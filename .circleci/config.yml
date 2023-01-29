@@ -46,21 +46,24 @@ jobs:
     docker:
       - image: node:8.10.0
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "f8:59:7f:1c:35:8b:bb:ef:4a:75:de:1b:40:fc:1e:4e"
       - checkout
       - attach_workspace:
           at: docs/_build
       - run:
+          name: Disable jekyll builds
+          command: touch docs/_build/html/.nojekyll
+      - run:
           name: Install and configure dependencies
           command: |
             npm install -g --silent gh-pages@2.0.1
-            git config user.email "ci-build@paulo.net"
+            git config user.email "ci-build@klukas.net"
             git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "f8:59:7f:1c:35:8b:bb:ef:4a:75:de:1b:40:fc:1e:4e"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs
 
 workflows:
   version: 2
