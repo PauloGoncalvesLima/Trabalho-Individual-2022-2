@@ -34,10 +34,10 @@ jobs:
           command: pip3 install Sphinx==6.1.3
       - run:
           name: Build
-          command: sphinx-quickstart /docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
+          command: sphinx-quickstart docs --sep --project 'Trabalho GCES 2022.2' --author 'Paulo Gonçalves Lima' -r trabalho_individual_gces_2022_paulo -l en
       - run:
           name: Build HTML
-          command: cd /docs/ && make html
+          command: cd docs/ && make html
       - persist_to_workspace:
           root: docs/build
           paths: 
