@@ -39,7 +39,7 @@ jobs:
           name: Build HTML
           command: cd /docs/ && make html
       - persist_to_workspace:
-          root: docs/_build
+          root: docs/build
           paths: 
             - html
   docs-deploy:
@@ -60,7 +60,7 @@ jobs:
             git config user.name "ci-build"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs/_build/html
+          command: gh-pages --dist docs/build/html
 
 workflows:
   version: 2
