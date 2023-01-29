@@ -22,8 +22,6 @@ RUN python3 -m venv $POETRY_HOME && \
     $POETRY_HOME/bin/poetry --version && \
     ${POETRY_HOME}/bin/poetry install
 
-RUN pip3 install Sphinx==6.1.3
-
 COPY execute_app.sh ./
 RUN chmod 777 execute_app.sh
 
